@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -6,6 +6,27 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans:
+        "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+}
+
+@layer components {
+    .toggle-emerald {
+        @apply relative appearance-none w-10 h-6 bg-slate-700 rounded-full cursor-pointer transition-colors duration-300;
+    }
+
+    .toggle-emerald::after {
+        content: "";
+        @apply absolute top-[2px] left-[2px] w-5 h-5 bg-white rounded-full transition-transform duration-300;
+    }
+
+    .toggle-emerald:checked {
+        @apply bg-emerald-500;
+    }
+
+    .toggle-emerald:checked::after {
+        @apply translate-x-4;
+    }
 }
