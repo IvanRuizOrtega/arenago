@@ -12,6 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // FORZAR PROXIES DE CONFIANZA
+        $middleware->trustProxies(at: '*');
+        
         // Set a custom path for unauthenticated users
         $middleware->redirectGuestsTo(Routes::WELCOME);
 
